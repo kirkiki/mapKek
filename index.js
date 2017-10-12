@@ -1,3 +1,7 @@
+var canvas = document.getElementById('mon_canvas');
+var context = canvas.getContext("2d");
+var xMap = 10;
+var yMap = 10;
 var Case = /** @class */ (function () {
     function Case(x, y) {
         this.x = x;
@@ -25,24 +29,30 @@ function init(x, y) {
     }
     context.beginPath();
     context.arc(10, 10, 10, 0, Math.PI * 2);
-    context.fill();
-    context.stroke();
+    var case1 = new Case(20, 20);
+    init(xMap, yMap);
+    function drawCase(newCase) {
+        context.beginPath();
+        context.rect(newCase.x * 20, newCase.y * 20, 20, 20);
+        context.stroke();
+    }
+    function clearCase(block) {
+        context.beginPath();
+        context.rect(block.x, block.y, 20, 20);
+        context.fillStyle = "white";
+        context.fill();
+        drawCase(block);
+    }
+    function shuffle(nbWall) {
+        while (nbWall > 0) {
+            var xRand = Math.floor((Math.random() * (xMap)) + 1) * 20;
+            var yRand = Math.floor((Math.random() * (yMap)) + 1) * 20;
+            context.beginPath();
+            context.rect(xRand, xRand, 20, 20);
+            context.fillStyle = "blue";
+            context.fillRect;
+            context.stroke();
+            nbWall--;
+        }
+    }
 }
-function drawCase(newCase) {
-    var canvas = document.getElementById('mon_canvas');
-    var context = canvas.getContext("2d");
-    context.beginPath();
-    context.rect(newCase.x * 20, newCase.y * 20, 20, 20);
-    context.stroke();
-}
-function clearCase(block) {
-    context.beginPath();
-    context.rect(block.x, block.y, 20, 20);
-    context.fillStyle = "white";
-    context.fill();
-    drawCase(block);
-}
-var canvas = document.getElementById('mon_canvas');
-var context = canvas.getContext("2d");
-var case1 = new Case(20, 20);
-init(10, 10);
