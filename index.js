@@ -20,6 +20,7 @@ function init(x, y) {
     shuffle(10);
     context.beginPath();
     context.arc(10, 10, 10, 0, Math.PI * 2);
+    context.fillStyle = "black";
     context.fill();
     context.stroke();
 }
@@ -30,12 +31,11 @@ function drawCase(newCase) {
 }
 function shuffle(nbWall) {
     while (nbWall > 0) {
-        var xRand = Math.floor((Math.random() * (xMap)) + 1) * 20;
-        var yRand = Math.floor((Math.random() * (yMap)) + 1) * 20;
+        var xRand = Math.floor((Math.random() * (xMap))) * 20;
+        var yRand = Math.floor((Math.random() * (yMap))) * 20;
         context.beginPath();
-        context.rect(xRand, xRand, 20, 20);
         context.fillStyle = "blue";
-        context.fillRect;
+        context.fillRect(xRand, yRand, 20, 20);
         context.stroke();
         nbWall--;
     }
